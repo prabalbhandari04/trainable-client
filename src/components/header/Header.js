@@ -12,7 +12,7 @@ function Header() {
 
     const handleLogout = async () => {
         try {
-            await axios.get('/user/logout')
+            await axios.get('https://trainable-backend.onrender.com/user/logout')
             localStorage.removeItem('firstLogin')
             window.location.href = "/";
         } catch (err) {
