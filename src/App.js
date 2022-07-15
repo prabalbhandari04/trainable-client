@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import Navbar from './components/Navbar';
 import Routes from './Routes';
-import Footer from './components/Footer';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const dispatch = useDispatch()

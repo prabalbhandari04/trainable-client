@@ -38,7 +38,7 @@ function Footer() {
         <FooterSubText>You can unsubscribe at any time.</FooterSubText>
         <Form>
           <FormInput name='email' type='email' placeholder='Your Email' />
-          <Button fontBig>Subscribe</Button>
+          <Button colorfontBig>Subscribe</Button>
         </Form>
       </FooterSubscription>
       <FooterLinksContainer>
@@ -80,9 +80,9 @@ function Footer() {
         <SocialMediaWrap>
           <SocialLogo to='/'>
             <SocialIcon />
-            ULTRA
+            TRAINBLE
           </SocialLogo>
-          <WebsiteRights>ULTRA © 2020</WebsiteRights>
+          <WebsiteRights>TRAINBLE © 2020</WebsiteRights>
           <SocialIcons>
             <SocialIconLink href='/' target='_blank' aria-label='Facebook'>
               <FaFacebook />
@@ -92,7 +92,7 @@ function Footer() {
             </SocialIconLink>
             <SocialIconLink
               href={
-                '//www.youtube.com/channel/UCsKsymTY_4BYR-wytLjex7A?view_as=subscriber'
+                'youtube.com'
               }
               rel='noopener noreferrer'
               target='_blank'

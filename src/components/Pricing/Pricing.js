@@ -22,7 +22,7 @@ import {
 
 function Pricing() {
   return (
-    <IconContext.Provider value={{ color: '#f5f7fa', size: 64 }}>
+    <IconContext.Provider value={{ color: '#4b59f7', size: 64 }}>
       <PricingSection>
         <PricingWrapper>
           <PricingHeading>Our Services</PricingHeading>

@@ -44,7 +44,7 @@ export const PricingContainer = styled.div`
 `;
 
 export const PricingCard = styled(Link)`
-  background: #242424;
+  background: white;
   box-shadow: 0 6px 20px rgba(56, 125, 255, 0.2);
   width: 280px;
   height: 500px;
@@ -76,7 +76,7 @@ export const PricingCardInfo = styled.div`
   height: 500px;
   padding: 24px;
   align-items: center;
-  color: #fff;
+  color: black;
 `;
 
 export const PricingCardIcon = styled.div`
