@@ -1,16 +1,18 @@
 import React, {useEffect} from 'react';
-import {BrowserRouter as Router} from 'react-router-dom'
+import {BrowserRouter as Router, Switch,Route} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {dispatchLogin, fetchUser, dispatchGetUser} from './redux/actions/authAction'
-
-import Header from './components/header/Header'
-import Body from './components/body/Body'
 import axios from 'axios';
+
+import Navbar from './components/Navbar';
+import Routes from './Routes';
+import Footer from './components/Footer';
 
 function App() {
   const dispatch = useDispatch()
   const token = useSelector(state => state.token)
   const auth = useSelector(state => state.auth)
+  const {isLogged} = auth
 
   useEffect(() => {
     const firstLogin = localStorage.getItem('firstLogin')
@@ -40,8 +42,9 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header />
-        <Body />
+          <Navbar />
+          <Routes />
+          <Footer />
       </div>
     </Router>
   );
