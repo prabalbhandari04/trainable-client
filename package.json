@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
+    "framer-motion": "^4.1.17",
     "i": "^0.3.7",
     "npm": "^8.14.0",
     "react": "^16.14.0",
@@ -21,7 +22,7 @@
     "styled-components": "^5.3.5"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

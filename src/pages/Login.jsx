@@ -33,7 +33,7 @@ function Login() {
             setUser({...user, err: '', success: res.data.msg})
 
             localStorage.setItem('firstLogin', true)
-
+            alert('Login Successful')
             dispatch(dispatchLogin())
             history.push("/")
 

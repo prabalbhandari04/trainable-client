@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import { InfoSection, Pricing } from '../components';
+import InfoSection from '../components/InfoSection/InfoSection'
+import Pricing from '../components/Pricing/Pricing'
 
 
 export const homeObjOne = {
