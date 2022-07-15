@@ -43,14 +43,14 @@ export const homeObjOne = {
     lightTopLine: false,
     lightText: false,
     lightTextDesc: false,
-    topLine: 'Sarah Jeni',
+    topLine: 'Work Smart',
     headline:
-      'Ultra helped me increase my revenue by over 3X in less than 3 months!',
+      'TRAINBLE helps  increase the revenue by over 3X in less than 3 months!',
     description:
-      "Their team is wonderful! I can't believe I didn't start working with them earlier.",
+      "Using Methologys like Deep Learning, Machine Learning, and Natural Language Processing, TRAINBLE can help you increase your revenue by over 3X in less than 3 months!",
     buttonLabel: 'View Case Study',
     imgStart: 'start',
-    img: require('../assets/profile.jpg'),
+    img: require('../assets/profile.png'),
     alt: 'Vault',
     start: 'true'
   };

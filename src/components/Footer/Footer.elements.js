@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 export const FooterContainer = styled.div`
   background-color: #4b59f7;
   padding: 4rem 0 2rem 0;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;

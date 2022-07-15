@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import ForgotPass from './pages/ForgotPassword';
 import ResetPass from './pages/ResetPassword';
 import NotFound from './utils/NotFound/NotFound'
+import FormComponent from './components/FormComponent';
 import {useSelector} from 'react-redux'
 
 function Routes() {
@@ -17,6 +18,7 @@ function Routes() {
         <section>
             <Switch>
             <Route path="/" component={Home} exact />
+            <Route path="/test" component={FormComponent} />
                 <Route path="/login" component={isLogged ? NotFound : Login} exact />
                 <Route path="/register" component={isLogged ? NotFound : Register} exact />
                 <Route path="/dashboard" component={isLogged ? Dashboard : NotFound} exact />
