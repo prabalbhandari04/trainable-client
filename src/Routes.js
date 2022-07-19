@@ -1,33 +1,29 @@
-import React from 'react'
-import {Switch, Route} from 'react-router-dom'
-import Register from './pages/Register';
-import Home from './pages/Home';
-import ActivationEmail from './pages/ActivationMail';
-import Dashboard from './pages/Dashboard';
-import ForgotPass from './pages/ForgotPassword';
-import ResetPass from './pages/ResetPassword';
-import NotFound from './utils/NotFound/NotFound'
-import Authorization from './utils/Authorization/Authorization'
-import { AccountBox } from './components/accountBox';
-import {useSelector} from 'react-redux'
 
-function Routes() {
-    const auth = useSelector(state => state.auth)
-    const {isLogged} = auth
-    return (
-        <section>
-            <Switch>
-                
-            <Route path="/" component={Home} exact />
-                <Route path="/login" component={isLogged ? NotFound : AccountBox} exact />
-                <Route path="/dashboard" component={isLogged ? Dashboard : Authorization} exact />
-                <Route path="/forgot_password" component={isLogged ? NotFound : ForgotPass} exact />
-                <Route path="/user/reset/:token" component={isLogged ? NotFound : ResetPass} exact />
-                <Route path="/user/activate/:activation_token" component={ActivationEmail} exact />
-                <Route path="*" component={NotFound} />
-            </Switch>
-        </section>
-    )
-}
+import Dashboard from "./pages/Dashboard.js";
+import Map from "./pages/Map.js";
+import UserProfile from "./pages/UserProfile.js";
 
-export default Routes
+var routes = [
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    icon: "tim-icons icon-chart-pie-36",
+    component: Dashboard,
+    layout: "/dash"
+  },
+  {
+    path: "/map",
+    name: "Map",
+    icon: "tim-icons icon-pin",
+    component: Map,
+    layout: "/dash"
+  },
+  {
+    path: "/profile",
+    name: "User Profile",
+    icon: "tim-icons icon-single-02",
+    component: UserProfile,
+    layout: "/dash"
+  }
+];
+export default routes;

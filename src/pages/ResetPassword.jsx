@@ -3,6 +3,8 @@ import axios from 'axios'
 import {useParams} from 'react-router-dom'
 import {showErrMsg, showSuccessMsg} from '../utils/notification/Notification'
 import {isLength, isMatch} from '../utils/validation/Validation'
+import Navbar from '../components/Navbar/Navbar'
+import Footer from '../components/Footer/Footer'
 
 
 const initialState = {
@@ -50,6 +52,7 @@ function ResetPassword() {
             <h2>Reset Your Password</h2>
 
             <div className="row">
+                <Navbar />
                 {err && showErrMsg(err)}
                 {success && showSuccessMsg(success)}
 
@@ -62,6 +65,7 @@ function ResetPassword() {
                 onChange={handleChangeInput} />         
 
                 <button onClick={handleResetPass}>Reset Password</button>
+                <Footer />
             </div>
         </div>
     )

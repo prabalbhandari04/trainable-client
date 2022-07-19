@@ -1,8 +1,10 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import InfoSection from '../components/InfoSection/InfoSection'
 import Pricing from '../components/Pricing/Pricing'
-
+import Header from '../components/Navbar/Navbar';
+import Footer from '../components/Footer/Footer';
+import Navbar from '../components/Navbar/Navbar';
+import { FooterLink } from '../components/Footer/Footer.elements';
 
 export const homeObjOne = {
     primary: false,
@@ -78,11 +80,13 @@ export const homeObjOne = {
 function Home() {
     return (
         <div className="home_page">
+          <Navbar />
             <InfoSection {...homeObjOne} />
             <InfoSection {...homeObjThree} />
             <InfoSection {...homeObjTwo} />
             <Pricing />
             <InfoSection {...homeObjFour} />
+          <Footer />
         </div>
     )
 }

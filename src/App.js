@@ -4,9 +4,10 @@ import {useDispatch, useSelector} from 'react-redux'
 import {dispatchLogin, fetchUser, dispatchGetUser} from './redux/actions/authAction'
 import axios from 'axios';
 
-import Navbar from './components/Navbar';
-import Routes from './Routes';
+import Navbar from './components/Navbar/Navbar';
+import routes from './routes';
 import Footer from './components/Footer/Footer';
+import MainRoute from './MainRoute';
 
 function App() {
   const dispatch = useDispatch()
@@ -42,9 +43,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-          <Navbar />
-          <Routes />
-          <Footer />
+          <MainRoute />
       </div>
     </Router>
   );

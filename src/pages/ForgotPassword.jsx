@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import {isEmail} from '../utils/validation/Validation'
 import {showErrMsg, showSuccessMsg} from '../utils/notification/Notification'
+import Navbar from '../components/Navbar/Navbar'
+import Footer from '../components/Footer/Footer'
 
 const initialState = {
     email: '',
@@ -37,6 +39,7 @@ function ForgotPassword() {
             <h2>Forgot Your Password?</h2>
 
             <div className="row">
+                <Navbar />
                 {err && showErrMsg(err)}
                 {success && showSuccessMsg(success)}
 
@@ -44,6 +47,7 @@ function ForgotPassword() {
                 <input type="email" name="email" id="email" value={email}
                 onChange={handleChangeInput} />
                 <button onClick={forgotPassword}>Verify your email</button>
+                <Footer />
             </div>
         </div>
     )
