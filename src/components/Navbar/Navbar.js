@@ -87,8 +87,8 @@ function Navbar() {
                 </NavLinks>
               </NavItem>
               <NavItem>
-                <NavLinks to='/products' onClick={closeMobileMenu}>
-                  Products
+                <NavLinks to='/recruiter/login' onClick={closeMobileMenu}>
+                  Recruiter
                 </NavLinks>
               </NavItem>
               <NavItemBtn>

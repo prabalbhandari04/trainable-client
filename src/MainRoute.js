@@ -9,6 +9,8 @@ import Authorization from './utils/Authorization/Authorization'
 import AccountBox  from './components/Authentication/AccountBox';
 import {useSelector} from 'react-redux'
 import AdminLayout from "./layouts/Admin/Admin.js";
+import AccountBoxRecruiter from './components/AuthenticationRecruiter/AccountBox';
+import Admin from './pages/admin';
 
 function MainRoute() {
     const auth = useSelector(state => state.auth)
@@ -19,6 +21,8 @@ function MainRoute() {
                  <Route path="/" component={Home} exact />
                  <Route path="/dash" render={(props) => <AdminLayout {...props} />} />
                 <Route path="/login" component={isLogged ? NotFound : AccountBox} exact />
+                <Route path="/recruiter/login" component={isLogged ? NotFound : AccountBoxRecruiter} exact />
+                <Route path="/admin" component={isLogged ? NotFound : Admin} exact />
                 <Route path="/forgot" component={isLogged ? NotFound : ForgotPass} exact />
                 <Route path="/user/reset/:token" component={isLogged ? NotFound : ResetPass} exact />
                 <Route path="/user/activate/:activation_token" component={ActivationEmail} exact />
