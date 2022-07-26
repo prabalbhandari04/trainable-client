@@ -1,0 +1,23 @@
+/* The classes in this file should be applied to the top level element within the application 
+ * This allows the variables to be inherited by any child elements. These variables can be used as var(--variable) for
+ * any CSS property on the child elements. 
+ * See the following article for more information https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables
+ */
+
+.dark {
+  --inner-bg-colour: #1e1e1e;
+  --outer-bg-image: linear-gradient(to bottom, #464646, #6f6f6f);
+  --tab-list-active: #5e5e5e;
+  --header-text: #ffffff;
+  --darkmode-toggle-button: #444444;
+  --darkmode-toggle-text: #cacaca;
+}
+
+.light {
+  --inner-bg-colour: #ffffff;
+  --outer-bg-image: linear-gradient(to bottom, #e3e3e3, #f8f8f8);
+  --tab-list-active: #2a18b8;
+  --header-text: #2a18b8;
+  --darkmode-button: #cacaca;
+  --darkmode-toggle-text: #cacaca;
+}
