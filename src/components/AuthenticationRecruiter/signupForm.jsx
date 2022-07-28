@@ -56,7 +56,7 @@ export function SignupForm(props) {
           const res = await axios.post('https://trainable-backend.onrender.com/recruiter/register', {
               name, email, password
           })
-
+          alert("Welcome Recruiter")
           setUser({...user, err: '', success: res.data.msg})
       } catch (err) {
           err.response.data.msg && 

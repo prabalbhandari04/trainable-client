@@ -33,6 +33,7 @@ function UserProfile() {
 
 
   const {user, isAdmin} = auth
+  console.log(user)
   const [data, setData] = useState(initialState)
   const {name, password, cf_password, err, success} = data
 

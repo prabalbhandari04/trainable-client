@@ -1,7 +1,9 @@
 
 import Dashboard from "./pages/Dashboard.jsx";
-import Map from "./pages/Map.js";
+import Map from "./pages/Assessment.jsx";
 import UserProfile from "./pages/UserProfile.jsx";
+import Assessment from "./pages/Assessment.jsx";
+import Question from "./pages/Question.jsx";
 
 var routes = [
   {
@@ -12,10 +14,10 @@ var routes = [
     layout: "/dash"
   },
   {
-    path: "/map",
-    name: "Map",
-    icon: "tim-icons icon-pin",
-    component: Map,
+    path: "/assessment",
+    name: "Assessment",
+    icon: "tim-icons icon-paper",
+    component: Assessment,
     layout: "/dash"
   },
   {
@@ -23,6 +25,11 @@ var routes = [
     name: "User Profile",
     icon: "tim-icons icon-single-02",
     component: UserProfile,
+    layout: "/dash"
+  },
+  {
+    path: "/question",
+    component: Question,
     layout: "/dash"
   }
 ];

@@ -47,7 +47,7 @@ export function LoginForm(props) {
             setUser({...user, err: '', success: res.data.msg})
             localStorage.setItem('firstLogin', true)
             dispatch(dispatchLogin())
-            alert(res.data.msg)
+            alert("Welcome Recruiter")
             history.push("/admin")
 
         } catch (err) {

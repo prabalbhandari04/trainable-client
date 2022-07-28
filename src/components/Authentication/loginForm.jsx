@@ -15,6 +15,9 @@ import {showErrMsg, showSuccessMsg} from '../../utils/notification/Notification'
 import {dispatchLogin} from '../../redux/actions/authAction'
 import {useDispatch} from 'react-redux'
 import './auth.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const initialState = {
   email: '',
@@ -36,36 +39,52 @@ export function LoginForm(props) {
         setUser({...user, [name]:value, err: '', success: ''})
     }
 
-    const handleClick = () => {
-      history.push('/register')
-    }
+    const showToastMessage = () => {
+      toast.success('Login Succesfull !', {
+          position: toast.POSITION.TOP_RIGHT
+      });
+  };
+
+  const showToastError = () => {
+    toast.error('Login Error! Please Try again', {
+        position: toast.POSITION.TOP_RIGHT
+    });
+};
 
     const handleSubmit = async e => {
         e.preventDefault()
         try {
+          showToastMessage()
             const res = await axios.post('/user/login', {email, password})
             setUser({...user, err: '', success: res.data.msg})
             localStorage.setItem('firstLogin', true)
             dispatch(dispatchLogin())
-            alert(res.data.msg)
-            history.push("/")
+            history.push('/')
 
         } catch (err) {
             err.response.data.msg && 
+            showToastError()
             setUser({...user, err: err.response.data.msg, success: ''})
         }
     }
+
+
+    const handleLogin = async e => {
+      handleSubmit(e)
+    }
+    
+
+
+
   return (
     <BoxContainer>
       
 
-      {err && showErrMsg(err)}
-            {success && showSuccessMsg(success)}
-
-          <form onSubmit={handleSubmit} >
+      
+          <form onSubmit={handleLogin} >
               <input  type='text' placeholder="Enter email address" id="email" value={email} name="email" onChange={handleChangeInput}/>
               <input type="password" placeholder="Enter password" id="password" value={password} name="password" onChange={handleChangeInput} />
-              <button  className="loginButton" type="submit">LOGIN</button>
+              <button  className="loginButton"  type="submit">LOGIN</button>
              
           </form>
             
@@ -76,7 +95,7 @@ export function LoginForm(props) {
                   Register
                 </BoldLink>
               </MutedLink>
-          
+              <ToastContainer />
           
     </BoxContainer>
   );
