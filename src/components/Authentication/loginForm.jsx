@@ -54,7 +54,7 @@ export function LoginForm(props) {
     const handleSubmit = async e => {
         e.preventDefault()
         try {
-          showToastMessage()
+          
             const res = await axios.post('/user/login', {email, password})
             setUser({...user, err: '', success: res.data.msg})
             localStorage.setItem('firstLogin', true)
@@ -69,11 +69,11 @@ export function LoginForm(props) {
     }
 
 
+
     const handleLogin = async e => {
       handleSubmit(e)
+      
     }
-    
-
 
 
   return (

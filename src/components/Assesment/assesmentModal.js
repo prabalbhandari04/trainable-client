@@ -3,13 +3,30 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 export function AssesmentModal(props) {
   const history = useHistory();
   const [show, setShow] = useState(false);
+  const [assessmentName, setAssessmentName] = React.useState("");
+  const [summary, setSummary] = React.useState("");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+
+  const handleAssessment = () => {
+    axios.post('https://trainable-backend.onrender.com/assessment/create', {
+      name : assessmentName,
+      summary : summary,
+    }).then(res => {
+      alert("Assessment Created")
+      handleClose();
+    }
+    ).catch(err => {
+      console.log(err)
+    } )
+  }
 
   const handleChange = () => {
     history.push('/dash/question');
@@ -32,6 +49,7 @@ export function AssesmentModal(props) {
                 type="text"
                 placeholder="Assessment Name"
                 autoFocus
+                onChange={(e) => setAssessmentName(e.target.value)}
               />
             </Form.Group>
             <Form.Group
@@ -39,7 +57,7 @@ export function AssesmentModal(props) {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Assessment Summary</Form.Label>
-              <Form.Control as="textarea" rows={3} />
+              <Form.Control as="textarea" onChange={(e) => setSummary(e.target.value)} rows={3} />
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -47,7 +65,7 @@ export function AssesmentModal(props) {
           <Button variant="danger" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="info" onClick={handleChange}>
+          <Button variant="info" onClick={handleAssessment}>
             Create Assessment 
           </Button>
         </Modal.Footer>
