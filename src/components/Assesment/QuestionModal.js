@@ -1,32 +1,20 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import React, { useState,useEffect} from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import Question from '../../pages/Question';
 
-
-export function AssesmentModal(props) {
+function QuestionModal() {
   const history = useHistory();
   const [show, setShow] = useState(false);
   const [assessmentName, setAssessmentName] = React.useState("");
   const [summary, setSummary] = React.useState("");
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [assessment,setAssessment] = useState(null);
 
-  useEffect(() => {
-		fetch('https://trainable-backend.onrender.com/assessment/')
-		.then( res => {
-				return res.json();
-		})
-		.then(res => {
-				setAssessment(res);
-        console.log(res);
-        
-		})
-	}, [assessment]);
 
   const handleAssessment = () => {
     axios.post('https://trainable-backend.onrender.com/assessment/create', {
@@ -35,7 +23,6 @@ export function AssesmentModal(props) {
     }).then(res => {
       alert("Assessment Created")
       handleClose();
-      history.push('/dash/question');
     }
     ).catch(err => {
       console.log(err)
@@ -84,9 +71,8 @@ export function AssesmentModal(props) {
           </Button>
         </Modal.Footer>
       </Modal>
-
-
     </>
   );
 }
 
+export default QuestionModal;

@@ -2,7 +2,7 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import {AssesmentModal} from '../components/Assesment/assesmentModal';
+import {AssesmentModal} from '../components/Assesment/AssesmentModal';
 import {AssesmentCard} from '../components/Assesment/AssesmentCard';
 function Assessment() {
   const [modalShow, setModalShow] = React.useState(false);

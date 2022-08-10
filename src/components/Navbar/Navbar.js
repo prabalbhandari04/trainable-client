@@ -19,7 +19,7 @@ import {
 import {useSelector} from 'react-redux'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-
+import toast, { Toaster } from 'react-hot-toast';
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -28,6 +28,8 @@ function Navbar() {
   const {user, isLogged} = auth
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+
+  const notifySucess = () => toast.success('Logout Succesful.');
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -41,6 +43,7 @@ function Navbar() {
       try {
           await axios.get('/user/logout')
           localStorage.removeItem('firstLogin')
+          notifySucess()
           window.location.href = "/";
       } catch (err) {
           window.location.href = "/";
@@ -87,32 +90,26 @@ function Navbar() {
                 </NavLinks>
               </NavItem>
               <NavItem>
+                <NavLinks to='/login' onClick={closeMobileMenu}>
+                  Job Seekers
+                </NavLinks>
+              </NavItem>
+              <NavItem>
                 <NavLinks to='/recruiter/login' onClick={closeMobileMenu}>
                   Recruiter
                 </NavLinks>
               </NavItem>
+
               <NavItemBtn>
                 {
                     isLogged
                     ? userLink()
-                    :<NavBtnLink to='/login'>
-                    <Button primary>SIGN UP</Button>
+                    :<NavBtnLink to='/'>
+                    
                   </NavBtnLink>
                 }
               </NavItemBtn>
-              {/* <NavItemBtn>
-                {button ? (
-                  <NavBtnLink to='/login'>
-                    <Button primary>SIGN UP</Button>
-                  </NavBtnLink>
-                ) : (
-                  <NavBtnLink to='/login'>
-                    <Button onClick={closeMobileMenu} fontBig primary>
-                      SIGN UP
-                    </Button>
-                  </NavBtnLink>
-                )}
-              </NavItemBtn> */}
+              
             
             </NavMenu>
           </NavbarContainer>

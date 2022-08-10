@@ -147,7 +147,7 @@ export default function AccountBox(props) {
             <HeaderContainer>
               <HeaderText>Create</HeaderText>
               <HeaderText>Account</HeaderText>
-              <SmallText>Please Register to continue!</SmallText>
+              <SmallText>Please Register to start your journey with us. </SmallText>
             </HeaderContainer>
           )}
         </TopContainer>

@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Switch,Route} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {dispatchLogin, fetchUser, dispatchGetUser} from './redux/actions/authAction'
 import axios from 'axios';
-
+import toast, { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import MainRoute from './MainRoute';
@@ -43,6 +43,10 @@ function App() {
     <Router>
       <div className="App">
           <MainRoute />
+          <Toaster
+            position="top-right"
+            reverseOrder={false}
+          />
       </div>
     </Router>
   );

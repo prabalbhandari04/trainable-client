@@ -11,7 +11,7 @@ import {useSelector} from 'react-redux'
 import AdminLayout from "./layouts/Admin/Admin.js";
 import AccountBoxRecruiter from './components/AuthenticationRecruiter/AccountBox';
 import admin from './pages/admin';
-
+import PrivacyPolicy from './pages/PrivacyPolic';
 function MainRoute() {
     const auth = useSelector(state => state.auth)
     const {isLogged} = auth
@@ -26,6 +26,7 @@ function MainRoute() {
                 <Route path="/forgot" component={isLogged ? NotFound : ForgotPass} exact />
                 <Route path="/user/reset/:token" component={isLogged ? NotFound : ResetPass} exact />
                 <Route path="/user/activate/:activation_token" component={ActivationEmail} exact />
+                <Route path="/privacy-policy" component={PrivacyPolicy} exact />
                 <Route path="*" component={NotFound} />
             </Switch>
         </section>

@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { CardTitle } from 'reactstrap';
 import AssessmentDetail from './AssessmentDetail';
+import {Link} from 'react-router-dom';
 
 export function AssesmentCard() {
 
@@ -49,7 +50,8 @@ export function AssesmentCard() {
         <button onClick={()=>handleDelete(assessment._id)}>Delete</button>
         <ListGroup.Item><strong>{assessment.name}</strong><Card.Link style={{ marginLeft : '140px' }} href="#"></Card.Link> </ListGroup.Item>
         <ListGroup.Item><CardTitle>Card Summary</CardTitle>{assessment.summary}</ListGroup.Item>
-        <ListGroup.Item><CardTitle>Card Question</CardTitle>Question</ListGroup.Item>
+        <ListGroup.Item><CardTitle>Card Question</CardTitle>Question <Link to={`/dash/question/${assessment._id}`}>Add</Link></ListGroup.Item>
+        
       </ListGroup>
       </Card.Body>
       <ListGroup className="list-group-flush">
@@ -63,24 +65,7 @@ export function AssesmentCard() {
       );
     }
     )
-    
      
-    // <Card  key={assessment.id} style={{ width: '20rem', marginTop : '20px' }}>
-    //   <Card.Body>
-    //   <ListGroup className="list-group-flush">
-    //     <ListGroup.Item><strong>{assessment.name}</strong><Card.Link style={{ marginLeft : '140px' }} href="#">Delete</Card.Link> </ListGroup.Item>
-    //     <ListGroup.Item><CardTitle>Card Summary</CardTitle>{assessment.summary}</ListGroup.Item>
-    //     <ListGroup.Item><CardTitle>Card Question</CardTitle>Question</ListGroup.Item>
-    //   </ListGroup>
-    //   </Card.Body>
-    //   <ListGroup className="list-group-flush">
-    //   <Card.Body>
-    //   <Card.Text>
-    //       Created at 27 Jul,22
-    //     </Card.Text>
-    //   </Card.Body>
-    //   </ListGroup>
-    // </Card>
     
   );
 }
