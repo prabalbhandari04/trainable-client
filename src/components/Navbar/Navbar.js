@@ -14,12 +14,16 @@ import {
   NavLinks,
   NavBtnLink,
   Dropdown,
-  DropSide
+  DropSide,
+  NavProfile
 } from './Navbar.elements';
 import {useSelector} from 'react-redux'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast';
+import AdminNavbar from  '../Navbars/AdminNavbar'
+import './Navbar.css'
+
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -39,23 +43,12 @@ function Navbar() {
     }
   };
 
-  const handleLogout = async () => {
-      try {
-          await axios.get('/user/logout')
-          localStorage.removeItem('firstLogin')
-          notifySucess()
-          window.location.href = "/";
-      } catch (err) {
-          window.location.href = "/";
-      }
-  }
+  
 
     const userLink = () => {
-      return <Dropdown>
-          <Dropdown><Link to="/dash"><Button primary>DashBoard</Button></Link></Dropdown>
-          <Dropdown><Button onClick={handleLogout} primary>Logout</Button></Dropdown>
-          
-      </Dropdown>
+      return <NavProfile>
+      <AdminNavbar />
+      </NavProfile>
   }
 
  
@@ -79,28 +72,32 @@ function Navbar() {
               {click ? <FaTimes /> : <FaBars />}
             </MobileIcon>
             <NavMenu onClick={handleClick} click={click}>
-              <NavItem>
-                <NavLinks to='/' onClick={closeMobileMenu}>
+              <NavItem  >
+                <NavLinks  to='/' onClick={closeMobileMenu}>
                   Home
                 </NavLinks>
-              </NavItem>
-              <NavItem>
+              </NavItem> 
+              <NavItem  >
                 <NavLinks to='/services' onClick={closeMobileMenu}>
                   Services
                 </NavLinks>
               </NavItem>
-              <NavItem>
+              <NavItem  >
+                <NavLinks to='/services' onClick={closeMobileMenu}>
+                  Contact Us
+                </NavLinks>
+              </NavItem>
+              <NavItem  >
                 <NavLinks to='/login' onClick={closeMobileMenu}>
                   Job Seekers
                 </NavLinks>
               </NavItem>
-              <NavItem>
-                <NavLinks to='/recruiter/login' onClick={closeMobileMenu}>
+              <NavItem   >
+                <NavLinks  to='/recruiter/login' onClick={closeMobileMenu}>
                   Recruiter
                 </NavLinks>
               </NavItem>
-
-              <NavItemBtn>
+               <NavItemBtn>
                 {
                     isLogged
                     ? userLink()

@@ -28,9 +28,11 @@ export const NavLogo = styled(Link)`
   justify-self: flex-start;
   cursor: pointer;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 3rem;
   display: flex;
   align-items: center;
+  position : absolute;
+  left:30px;
 `;
 
 export const NavIcon = styled(FaMagento)`
@@ -58,7 +60,7 @@ export const NavMenu = styled.ul`
   list-style: none;
   text-align: center;
   position:absolute;
-  left:550px;
+  left:700px;
   @media screen and (max-width: 960px) {
     display: flex;
     flex-direction: column;
@@ -74,12 +76,18 @@ export const NavMenu = styled.ul`
 `;
 
 export const NavItem = styled.li`
-  height: 80px;
+  margin-top: 0.5rem;
   border-bottom: 2px solid transparent;
-
   &:hover {
     border-bottom: 2px solid #4b59f7;
   }
+
+  ${({ active }) =>
+    active &&
+    `
+    background: #4b59f7;
+  `}
+  
 
   @media screen and (max-width: 960px) {
     width: 100%;
@@ -150,6 +158,17 @@ display: flex;
     align-items: center;
     width: 100%;
     height: 120px;
+  }
+`;
+
+
+export const NavProfile = styled.li`
+  position : relative;
+  top:-25px;
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+
   }
 `;
 

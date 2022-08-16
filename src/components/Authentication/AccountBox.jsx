@@ -12,6 +12,7 @@ const BoxContainer = styled.div`
   position: absolute;
   left: 35%;
   width: 350px;
+  height : 620px;
   min-height: 500px;
   display: flex;
   flex-direction: column;

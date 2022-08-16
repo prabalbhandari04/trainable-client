@@ -22,11 +22,14 @@ import {
   NavbarToggler,
   ModalHeader
 } from "reactstrap";
+import {Link, useHistory} from 'react-router-dom'
 
 function AdminNavbar(props) {
   const [collapseOpen, setcollapseOpen] = React.useState(false);
   const [modalSearch, setmodalSearch] = React.useState(false);
   const [color, setcolor] = React.useState("navbar-transparent");
+  const history = useHistory()
+
   React.useEffect(() => {
     window.addEventListener("resize", updateColor);
     // Specify how to clean up after this effect:
@@ -64,7 +67,24 @@ function AdminNavbar(props) {
     } catch (err) {
         window.location.href = "/";
     }
-}
+  }
+  const handleProfile = async () => {
+    try {
+      history.push('/dash/profile')
+    } catch (err) {
+      window.location.href = "/";
+    }
+  }
+
+  const handleDash = async () => {
+    try {
+      history.push('/dash')
+    } catch (err) {
+      window.location.href = "/";
+    }
+  }
+
+
 
   return (
     <>
@@ -93,13 +113,13 @@ function AdminNavbar(props) {
           </NavbarToggler>
           <Collapse navbar isOpen={collapseOpen}>
             <Nav className="ml-auto" navbar>
-              <InputGroup className="search-bar">
+              {/* <InputGroup className="search-bar">
                 <Button color="link" onClick={toggleModalSearch}>
                   <i className="tim-icons icon-zoom-split" />
                   <span className="d-lg-none d-md-block">Search</span>
                 </Button>
-              </InputGroup>
-              <UncontrolledDropdown nav>
+              </InputGroup> */}
+              {/* <UncontrolledDropdown nav>
                 <DropdownToggle
                   caret
                   color="default"
@@ -137,7 +157,7 @@ function AdminNavbar(props) {
                     </DropdownItem>
                   </NavLink>
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
               <UncontrolledDropdown nav>
                 <DropdownToggle
                   caret
@@ -152,8 +172,11 @@ function AdminNavbar(props) {
                   <p className="d-lg-none">Log out</p>
                 </DropdownToggle>
                 <DropdownMenu className="dropdown-navbar" right tag="ul">
+                <NavLink tag="li">
+                    <DropdownItem className="nav-item" onClick={handleDash}>Dashboard</DropdownItem>
+                  </NavLink>
                   <NavLink tag="li">
-                    <DropdownItem className="nav-item">Profile</DropdownItem>
+                    <DropdownItem className="nav-item" onClick={handleProfile}>Profile</DropdownItem>
                   </NavLink>
                   <NavLink tag="li">
                     <DropdownItem className="nav-item">Settings</DropdownItem>

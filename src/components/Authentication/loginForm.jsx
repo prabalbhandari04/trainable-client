@@ -49,7 +49,7 @@ export function LoginForm(props) {
       })) {
         setErrorMessage('')
       } else {
-        setErrorMessage('Password should contain at least 8 characters, 1 uppercase, 1 number and 1 symbol')
+        setErrorMessage('Password should have 8 characters, 1 uppercase, 1 number and 1 symbol')
       }
     }
 
@@ -74,7 +74,7 @@ export function LoginForm(props) {
             localStorage.setItem('firstLogin', true)
             notifySucess()
             dispatch(dispatchLogin())
-            history.push('/')
+            history.push('/dash/dashboard')
 
         } catch (err) {
             err.response.data.msg && 
@@ -96,14 +96,17 @@ export function LoginForm(props) {
     <BoxContainer>
       
 
-      
+        
           <form onSubmit={handleLogin} >
               <input class="LoginInput"  type='text' placeholder="Enter email address" id="email" value={email} name="email" onChange={handleChangeInput}/><br></br>
               <input  class="LoginPassword"  type={passwordShown ? "text" : "password"} placeholder="Enter password" id="password" value={password} name="password" onChange={handleChangeInput} />
-              <label class="Show" onClick={togglePassword}>Show</label>
-
+              <label class="Show" onClick={togglePassword}><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg></p></label>
               {errorMessage === '' ? null :
               <span style={{
+                fontSize: '11px',
                 color: 'red',
               }}>{errorMessage}</span>}
               
@@ -115,7 +118,7 @@ export function LoginForm(props) {
           </form>
             
           <MutedLink href="/forgot">Forget your password?</MutedLink>
-              <MutedLink href="#">
+              <MutedLink class="BottomLink" href="#">
                 Don't have an account?{" "}
                 <BoldLink href="#" onClick={switchToSignup}>
                   Register

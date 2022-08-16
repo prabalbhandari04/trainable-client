@@ -101,7 +101,11 @@ export function SignupForm(props) {
                     <input class="RegisterPassword"  type={passwordShown ? "text" : "password"} placeholder="Enter password" 
                     value={password} name="password" onChange={handleChangeInput} />
                     
-                    <label class="RegisterShow" onClick={togglePassword}>Show</label>
+                    <label class="RegisterShow" onClick={togglePassword}><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg></p></label>
+
                     {errorMessage === '' ? null :
                     <span style={{
                       color: 'red',
@@ -113,12 +117,16 @@ export function SignupForm(props) {
                     {err && showErrMsg(err)}
 
 
-                    <label class="CfRegisterShow" onClick={togglePasswordCf}>Show</label>
+                    <label class="CfRegisterShow" onClick={togglePassword}><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg></p></label>
+
                     <button className="LoginButton" type="submit">Register</button>
             </form>
 
       <Marginer direction="vertical" margin={10} />
-      <MutedLink href="#">
+      <MutedLink className="mb-2" href="#">
         Already have an account?
         <BoldLink href="#" onClick={switchToSignin}>
           Login
