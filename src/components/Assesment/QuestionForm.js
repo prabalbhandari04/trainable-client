@@ -1,8 +1,23 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import React, { useEffect } from 'react';
+import QuestionCard from './QuestionCard';
+import {
+  Button,
+  Card,
+  CardTitle,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  CardText,
+  ListGroup,
+  FormGroup,
+  Form,
+  Input,
+  Row,
+  Col,
+  ListGroupItem
+} from "reactstrap";
 
 export function QuestionForm() {
   const history = useHistory();
@@ -10,7 +25,7 @@ export function QuestionForm() {
   const [type, setType] = React.useState("");
   const [ required, setrequired] = React.useState("");
   const [assessment, setAssessment] = React.useState([]);
-
+  const [showQuestion , setShowQuestion] = React.useState([]);
 
   useEffect(() => {
 		fetch('https://trainable-backend.onrender.com/assessment/')
@@ -19,16 +34,24 @@ export function QuestionForm() {
 		})
 		.then(res => {
 				setAssessment(res[0]);
-        console.log(res[0]);
+		})
+	}, [assessment._id]);
+
+  useEffect(() => {
+		fetch(`https://trainable-backend.onrender.com/assessment/question/62f0f42410f91d004d862485`)
+		.then( res => {
+				return res.json();
+		})
+		.then(res => {
+      setShowQuestion(res);
+      console.log(res);
         
 		})
-	}, [assessment]);
-
-  
+	}, [showQuestion,assessment._id]);
 
 
   const handleQuestion = () => {
-    axios.post('https://trainable-backend.onrender.com/assessment/question/62f0f42410f91d004d862485', {
+    axios.post(`https://trainable-backend.onrender.com/assessment/question/${assessment._id}`, {
       question : question,
       type : "Text",
       required : false,
@@ -42,6 +65,23 @@ export function QuestionForm() {
     } )
   }
 
+  const handleDelete = (id) => {
+    fetch(`https://trainable-backend.onrender.com/assessment/question/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => {
+      alert('Question Deleted');
+      setShowQuestion(showQuestion.filter(question => question.id !== id));
+    }
+    )
+    .catch(err => {
+      console.log(err);
+    }
+    )
+  }
 
   const handleChange = () => {
     history.push('/dash/assessment');
@@ -51,48 +91,61 @@ export function QuestionForm() {
   return (
 
     
-    
+    <div>
+            <div className="float-left">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Create Question</CardTitle>
+                </CardHeader>
+                <CardBody>
+                  <Form>
+                    <FormGroup>
+                      <Input type="text" name="question" id="question" placeholder="Question" onChange={(e) => setQuestion(e.target.value)} />
+                    </FormGroup>
+                    <FormGroup>
+                      <Input type="select" name="type" id="type" onChange={(e) => setType(e.target.value)}>
+                        <option value="Text">Text</option>
+                        <option value="Radio">Radio</option>
+                        <option value="Checkbox">Checkbox</option>
+                      </Input>
+                    </FormGroup>
+                    <FormGroup>
+                      <Input type="select" name="required" id="required" onChange={(e) => setrequired(e.target.value)}>
+                        <option value="false">False</option>
+                        <option value="true">True</option>
+                      </Input>
+                    </FormGroup>
+                  </Form>
+                </CardBody>
+                <CardFooter>
+                  <Button onClick={handleQuestion}>Create Question</Button>
+                  <Button onClick={handleChange}>Cancel</Button>
+                </CardFooter>
+              </Card>
+            </div>
+            
+            
+            <div>
+                  {showQuestion.map(question => {
+                    return (
+                      <Card key={question._id}>
+                        <CardHeader>
+                          <CardTitle>Question : {question.question}</CardTitle>
+                        </CardHeader>
+                        <CardBody>
+                          <CardText>Question Type : {question.type}</CardText>
+                          <CardText>Question Type : {question.required}</CardText>
+                        </CardBody>
+                        <CardFooter>
+                          <Button onClick={handleChange}>Edit</Button>
+                          <Button onClick={() => handleDelete(question._id)}>Delete</Button>
+                        </CardFooter>
+                      </Card>
+                    )
+                  })}
+            </div>
+    </div>
 
-    <Form>
-      <Form.Group
-              className="mb-3 mt-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label>Write Your Question Here</Form.Label>
-              <Form.Control as="textarea" rows={3} onChange={(e) => setQuestion(e.target.value)} />
-            </Form.Group>
-
-      <Form.Label className="mb-3 " >Answer Type</Form.Label>
-      <Form.Select  aria-label="Default select example" onChange={(e) => setType(e.target.value)} >
-      <option value="1">Text</option>
-      <option value="2">Multiple Choice</option>
-      <option value="3">Video</option>
-      <option value="3">Audio</option>
-    </Form.Select>
-
-    <Form.Label className="mb-3 " >Required</Form.Label>
-      <Form.Select  aria-label="Default select example" onChange={(e) => setrequired(e.target.value)} >
-      <option value="1">Yes</option>
-      <option value="2">No</option>
-    </Form.Select>
-
-    <div className='mb-3 mt-3'>
-        <Button onClick={handleQuestion} variant="info" size="sm">
-          Save
-        </Button>{' '}
-        <Button variant="info" size="sm">
-          Add More
-        </Button>
-        <Button variant="secondary" size="sm">
-          Update
-        </Button>{' '}
-        <Button onClick={handleChange} variant="danger" size="sm">
-          Cancel
-        </Button>
-      </div>
-      
-
-    </Form>
   );
 }
 

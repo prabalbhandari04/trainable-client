@@ -23,7 +23,6 @@ export function AssesmentModal(props) {
 		})
 		.then(res => {
 				setAssessment(res);
-        console.log(res);
         
 		})
 	}, [assessment]);
